@@ -14,6 +14,8 @@ public class PadMain : MonoBehaviour
     public Button button_open_sound;
     public PadSound padsound;
 
+    public Button button_exit;
+
     public void Init()
     {
         this.padsocial.button_close.onClick.AddListener(() => {
@@ -40,15 +42,16 @@ public class PadMain : MonoBehaviour
             this.padsound.Open();
         });
     }
+
     // Start is called before the first frame update
-    void Start()
+        void Start()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
+        void Update()
     {
-        
+
     }
 }
