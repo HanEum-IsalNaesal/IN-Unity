@@ -23,9 +23,20 @@ public class PadSocial: MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    public TMP_InputField inputFriendId;
+    public Button btnSearchFriend;
+    public System.Action<string> onClickSearchFriend;
+
     private void Awake()
     {
-    
+        this.btnSearchFriend.onClick.AddListener(() =>
+        {
+            string friendid = this.inputFriendId.text;
+            
+            Debug.LogFormat("id: {0}", friendid);
+
+            this.onClickSearchFriend(friendid);
+        });
     }
 
     void Start()
