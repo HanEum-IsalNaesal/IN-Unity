@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using Photon.Pun;
 using UnityEngine.XR.Interaction.Toolkit;
+using Unity.XR.CoreUtils;
 
 public class NetworkPlayer : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class NetworkPlayer : MonoBehaviour
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-        XRRig rig = FindObjectOfType<XRRig>();
+        XROrigin rig = FindObjectOfType<XROrigin>();
         headRig = rig.transform.Find("Camera Offset/Main Camera");
         leftHandRig = rig.transform.Find("Camera Offset/LeftHand Controller");
         rightHandRig = rig.transform.Find("Camera Offset/RightHand Controller");
@@ -79,16 +80,7 @@ public class NetworkPlayer : MonoBehaviour
 // 컨트롤러 동기화 노드를 호출하여 노드 위치를 얻기 위해 xr 노드에서 장치를 가져온다. 
     void MapPosition(Transform target, Transform rigTransform)
     {
-
-         if (target != null && rigTransform != null)
-        {
-            target.position = rigTransform.position;
-            target.rotation = rigTransform.rotation;
-        }
-        else
-        {
-            Debug.LogWarning("target or rigTransform is null");
-        }
-        
+        target.position = rigTransform.position;
+        target.rotation = rigTransform.rotation;
     }
 }
