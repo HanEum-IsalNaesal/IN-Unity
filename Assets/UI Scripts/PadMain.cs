@@ -16,6 +16,9 @@ public class PadMain : MonoBehaviour
 
     public Button button_exit;
 
+
+    public PadSocial padSocial;
+
     public void Init()
     {
         this.padsocial.button_close.onClick.AddListener(() => {
@@ -46,7 +49,10 @@ public class PadMain : MonoBehaviour
     // Start is called before the first frame update
         void Start()
     {
-        
+        this.padsocial.onClickSearchFriend = (friendid) =>
+        {
+            Debug.LogFormat("friendid: {0}",friendid);
+        };
     }
 
     // Update is called once per frame

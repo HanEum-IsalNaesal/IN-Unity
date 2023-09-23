@@ -32,8 +32,7 @@ public class PadSocial: MonoBehaviour
         this.btnSearchFriend.onClick.AddListener(() =>
         {
             string friendid = this.inputFriendId.text;
-            
-            Debug.LogFormat("id: {0}", friendid);
+            Debug.LogFormat("friendid: {0}", friendid);
 
             this.onClickSearchFriend(friendid);
         });
