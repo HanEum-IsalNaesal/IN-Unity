@@ -14,10 +14,9 @@ public class PadMain : MonoBehaviour
     public Button button_open_sound;
     public PadSound padsound;
 
+    public AlarmRequest alarmrequest;
+
     public Button button_exit;
-
-
-    public PadSocial padSocial;
 
     public void Init()
     {
@@ -52,6 +51,16 @@ public class PadMain : MonoBehaviour
         this.padsocial.onClickSearchFriend = (friendid) =>
         {
             Debug.LogFormat("friendid: {0}",friendid);
+        };
+
+        this.alarmrequest.onClickYesFriend = (friendid) =>
+        {
+            Debug.LogFormat("friendid: {0}, yes", friendid);
+        };
+
+        this.alarmrequest.onClickNoFriend = (friendid) =>
+        {
+            Debug.LogFormat("friendid: {0}, no", friendid);
         };
     }
 
