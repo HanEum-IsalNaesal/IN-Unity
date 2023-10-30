@@ -1,26 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
-public class VRStartButtonControl : MonoBehaviour
+public class StartButtonControl : MonoBehaviour
 {
-    public Canvas canvas; // Start 버튼을 눌렀을 때 활성화 또는 비활성화할 Canvas
+    public GameObject uiToActivate; // 시작 버튼을 눌렀을 때 활성화할 UI
+    private bool uiActive = false;
 
-    private void Start()
+    void Update()
     {
-        if (canvas != null)
+        if (XRSettings.isDeviceActive) // Oculus 장치가 활성화되어 있는지 확인
         {
-            canvas.enabled = false; // 게임 시작 시 Canvas를 비활성화
-        }
-    }
-
-    private void Update()
-    {
-        if (OVRInput.GetDown(OVRInput.Button.Start)) // Oculus Start 버튼이 눌렸을 때
-        {
-            if (canvas != null)
+            // Oculus Touch 컨트롤러의 Start 버튼을 감지
+            if (Input.GetKeyDown(KeyCode.Return))
             {
-                canvas.enabled = !canvas.enabled; // Canvas의 활성화 상태를 토글합니다.
+                if (!uiActive) // UI가 활성화되지 않은 경우 UI를 활성화
+                {
+                    uiToActivate.SetActive(true);
+                    uiActive = true;
+                }
+                else // UI가 이미 활성화된 경우 UI를 비활성화
+                {
+                    uiToActivate.SetActive(false);
+                    uiActive = false;
+                }
             }
         }
     }
